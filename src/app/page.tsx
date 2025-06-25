@@ -15,18 +15,36 @@ export default async function Home() {
   return (
     <div>
       <div className="max-w-2xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-4">
-          Sindres dagbok i India
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
+          Sindre skriver
         </h1>
         <p className="text-lg text-muted-foreground">
-          bli med meg til Manipal
+          om folk, steder og tilfeldige tanker i India
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
+      <div className="flex flex-col lg:flex-row gap-8 justify-center">
+        {/* Left column for intro */}
+        <div className="lg:w-[30%]">
+          {posts
+            .filter((post) => post.title.toLowerCase().includes("hvem er jeg"))
+            .map((post) => (
+              <div key={post.id}>
+                <PostCard post={post} />
+              </div>
+            ))}
+        </div>
+
+        {/* Right column for main gallery */}
+        <div className="lg:w-[50%] columns-1 md:columns-2 lg:columns-2 gap-6 space-y-6">
+          {posts
+            .filter((post) => !post.title.toLowerCase().includes("hvem er jeg"))
+            .map((post) => (
+              <div key={post.id} className="break-inside-avoid">
+                <PostCard post={post} />
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
