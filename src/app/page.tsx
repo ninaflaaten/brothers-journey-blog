@@ -13,8 +13,8 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
-    <div>
-      <div className="max-w-2xl mx-auto text-center mb-12">
+    <div className="px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto text-center mb-16">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
           Sindre skriver
         </h1>
@@ -23,9 +23,9 @@ export default async function Home() {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 justify-center">
+      <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
         {/* Left column for intro */}
-        <div className="lg:w-[30%]">
+        <div className="lg:w-[28%] lg:sticky lg:top-24 self-start">
           {posts
             .filter((post) => post.title.toLowerCase().includes("hvem er jeg"))
             .map((post) => (
@@ -36,7 +36,7 @@ export default async function Home() {
         </div>
 
         {/* Right column for main gallery */}
-        <div className="lg:w-[50%] columns-1 md:columns-2 lg:columns-2 gap-6 space-y-6">
+        <div className="lg:w-[65%] grid grid-cols-1 sm:grid-cols-2 gap-6">
           {posts
             .filter((post) => !post.title.toLowerCase().includes("hvem er jeg"))
             .map((post) => (

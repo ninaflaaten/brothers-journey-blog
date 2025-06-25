@@ -10,7 +10,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Clock, Calendar, ArrowUpRight } from "lucide-react";
+import { Clock, Calendar } from "lucide-react";
 
 interface PostCardProps {
   post: Post;
@@ -22,18 +22,24 @@ export default function PostCard({ post }: PostCardProps) {
  
 
   return (
-    <Card className="group relative pt-0 overflow-hidden hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <Card
+      className={`group relative overflow-hidden rounded-xl transition-all duration-300 h-[500px] flex flex-col justify-between ${
+        post.title === "Hvem er jeg"
+          ? "bg-white/40 dark:bg-zinc-800/60 shadow-lg md:col-span-2 backdrop-blur-md"
+          : "bg-white/40 dark:bg-zinc-900/60 shadow-md border-none backdrop-blur-md"
+      }`}
+    >
       <Link
         href={`/posts/${post.slug}`}
         className="absolute inset-0 z-10"
         aria-label={post.title}
       />
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-lg">
+      <div className="relative w-full overflow-hidden rounded-t-xl pt-0 mt-[-3rem]">
         {post.coverImage ? ( // endret for å legge til bilder enklest mulig
           <img
             src={post.coverImage}
             alt={post.title}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="h-64 w-full object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 bg-muted/80" />
@@ -42,42 +48,37 @@ export default function PostCard({ post }: PostCardProps) {
           <div className="absolute top-4 left-4 z-20">
             <Badge
               variant="secondary"
-              className="backdrop-blur-sm bg-background/80 shadow-sm"
+              className="bg-white/90 dark:bg-zinc-800/80 text-xs px-2 py-1 rounded shadow"
             >
               {post.category}
             </Badge>
           </div>
         )}
       </div>
-      <CardHeader className="space-y-2">
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <Calendar className="h-4 w-4" />
-            <span>{format(new Date(post.date), "MMM d, yyyy")}</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <Clock className="h-4 w-4" />
-            {/* <span>{readingTime}</span> */}
-          </div>
-        </div>
+      <CardHeader className="px-6 pt-0 pb-6 space-y-2">
         <div className="group-hover:pr-8 transition-all duration-300">
-          <h2 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+          <h2 className="text-2xl font-bold text-zinc-800 dark:text-white group-hover:text-primary transition-colors">
             {post.title}
           </h2>
-          <ArrowUpRight className="absolute top-[7.5rem] right-6 h-6 w-6 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
         </div>
-        <p className="text-muted-foreground line-clamp-2">{post.description}</p>
+        <p
+          className={`text-sm text-zinc-600 dark:text-zinc-300 ${
+            post.title === "Hvem er jeg" ? "line-clamp-none" : "line-clamp-4"
+          }`}
+        >
+          {post.description}
+        </p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-6 pb-4">
         {post.author && (
-          <p className="text-sm text-muted-foreground">By {post.author}</p>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">By {post.author}</p>
         )}
       </CardContent>
       {post.tags && post.tags.length > 0 && (
-        <CardFooter>
+        <CardFooter className="px-6 pb-4">
           <div className="flex gap-2 flex-wrap">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="outline" className="bg-background/80">
+              <Badge key={tag} variant="outline" className="bg-zinc-100 dark:bg-zinc-700 text-xs">
                 {tag}
               </Badge>
             ))}

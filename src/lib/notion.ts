@@ -49,7 +49,7 @@ export async function fetchPublishedPosts() {
     sorts: [
       {
         property: "Published Date",
-        direction: "descending",
+        direction: "ascending",
       },
     ],
   });
