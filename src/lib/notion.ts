@@ -63,12 +63,15 @@ export async function getPost(pageId: string): Promise<Post | null> {
       page_id: pageId,
     })) as PageObjectResponse;
     const mdBlocks = await n2m.pageToMarkdown(pageId);
-    const { parent: contentString } = n2m.toMarkdownString(mdBlocks);
+    const { parent: contentStringRaw } = n2m.toMarkdownString(mdBlocks); // endret for å lage new posts lettere
+    const contentString = contentStringRaw ?? "";
 
-    // Get first paragraph for description (excluding empty lines)
     const paragraphs = contentString
       .split("\n")
       .filter((line: string) => line.trim().length > 0);
+
+
+
     const firstParagraph = paragraphs[0] || "";
     const description =
       firstParagraph.slice(0, 160) + (firstParagraph.length > 160 ? "..." : "");
@@ -83,7 +86,15 @@ export async function getPost(pageId: string): Promise<Post | null> {
           .replace(/[^a-z0-9]+/g, "-") // Replace any non-alphanumeric chars with dash
           .replace(/^-+|-+$/g, "") || // Remove leading/trailing dashes
         "untitled",
-      coverImage: properties["Featured Image"]?.url || undefined,
+      coverImage:
+        properties["Featured Image"]?.type === "files" &&
+        Array.isArray(properties["Featured Image"]?.files) &&
+        properties["Featured Image"].files.length > 0
+          ? properties["Featured Image"].files[0].file.url
+          : undefined,
+
+
+      
       description,
       date:
         properties["Published Date"]?.date?.start || new Date().toISOString(),
@@ -92,6 +103,7 @@ export async function getPost(pageId: string): Promise<Post | null> {
       tags: properties.Tags?.multi_select?.map((tag: any) => tag.name) || [],
       category: properties.Category?.select?.name,
     };
+
 
     return post;
   } catch (error) {

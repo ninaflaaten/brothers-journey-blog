@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { format } from "date-fns";
 import { Post, getWordCount } from "@/lib/notion";
 import { Badge } from "@/components/ui/badge";
-import { calculateReadingTime } from "@/lib/utils";
+// import { calculateReadingTime } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -18,7 +18,8 @@ interface PostCardProps {
 
 export default function PostCard({ post }: PostCardProps) {
   const wordCount = post.content ? getWordCount(post.content) : 0;
-  const readingTime = calculateReadingTime(wordCount);
+  // const readingTime = calculateReadingTime(wordCount);
+ 
 
   return (
     <Card className="group relative pt-0 overflow-hidden hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -28,12 +29,11 @@ export default function PostCard({ post }: PostCardProps) {
         aria-label={post.title}
       />
       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-lg">
-        {post.coverImage ? (
-          <Image
+        {post.coverImage ? ( // endret for å legge til bilder enklest mulig
+          <img
             src={post.coverImage}
             alt={post.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="absolute inset-0 bg-muted/80" />
@@ -57,7 +57,7 @@ export default function PostCard({ post }: PostCardProps) {
           </div>
           <div className="flex items-center gap-1.5">
             <Clock className="h-4 w-4" />
-            <span>{readingTime}</span>
+            {/* <span>{readingTime}</span> */}
           </div>
         </div>
         <div className="group-hover:pr-8 transition-all duration-300">
