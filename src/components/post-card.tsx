@@ -35,18 +35,14 @@ export default function PostCard({ post }: PostCardProps) {
         aria-label={post.title}
       />
       <div className="relative w-full overflow-hidden rounded-t-xl pt-0 mt-[-3rem]">
-        {post.coverImage ? (
+        {post.coverImage ? ( // endret for å legge til bilder enklest mulig
           <img
             src={post.coverImage}
             alt={post.title}
             className="h-64 w-full object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <img
-            src="/fallback.jpg"
-            alt="Fallback image"
-            className="h-64 w-full object-cover rounded-t-xl transition-transform duration-500 group-hover:scale-105"
-          />
+          <div className="absolute inset-0 bg-muted/80" />
         )}
         {post.category && (
           <div className="absolute top-4 left-4 z-20">
