@@ -66,7 +66,7 @@ export default function PostCard({ post }: PostCardProps) {
             post.title === "Hvem er jeg" ? "line-clamp-none" : "line-clamp-4"
           }`}
         >
-          {post.description}
+          {post.description.replace(/[#*_`~>-]+/g, "")}
         </p>
       </CardHeader>
       <CardContent className="px-6 pb-4">
