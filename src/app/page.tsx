@@ -1,6 +1,8 @@
 import { fetchPublishedPosts, getPost, Post } from "@/lib/notion";
 import PostCard from "@/components/post-card";
 
+export const dynamic = "force-dynamic";
+
 async function getPosts(): Promise<Post[]> {
   const posts = await fetchPublishedPosts();
   const allPosts = await Promise.all(
