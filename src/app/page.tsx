@@ -1,3 +1,4 @@
+// Forside
 import { fetchPublishedPosts, getPost, Post } from "@/lib/notion";
 import PostCard from "@/components/post-card";
 
@@ -5,10 +6,12 @@ export const dynamic = "force-dynamic";
 
 async function getPosts(): Promise<Post[]> {
   const posts = await fetchPublishedPosts();
-  const allPosts = await Promise.all(
-    posts.results.map((post) => getPost(post.id))
-  );
-  return allPosts.filter((post): post is Post => post !== null);
+  const allPosts: Post[] = [];
+  for (const p of posts.results) {
+    const post = await getPost(p.id);
+    if (post) allPosts.push(post);
+  }
+  return allPosts;
 }
 
 export default async function Home() {

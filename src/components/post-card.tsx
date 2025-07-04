@@ -1,3 +1,4 @@
+// Postkort
 import Link from "next/link";
 // import Image from "next/image";
 import { format } from "date-fns";
@@ -10,7 +11,6 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Clock, Calendar } from "lucide-react";
 
 interface PostCardProps {
   post: Post;

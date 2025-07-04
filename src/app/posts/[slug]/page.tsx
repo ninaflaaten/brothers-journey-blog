@@ -1,6 +1,6 @@
+// Postkort-innside
 import { fetchPublishedPosts, getPost, getWordCount } from "@/lib/notion";
 import { format } from "date-fns";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
@@ -117,15 +117,11 @@ export default async function PostPage({ params }: PostPageProps) {
       />
       <article className="max-w-3xl mx-auto prose dark:prose-invert">
         {post.coverImage && (
-          <div className="relative aspect-video w-full mb-8 rounded-lg overflow-hidden">
-            <Image
-              src={post.coverImage}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="w-full object-cover rounded-lg aspect-video mb-8"
+          />
         )}
 
         <header className="mb-8">
