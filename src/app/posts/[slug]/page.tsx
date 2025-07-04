@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import { ResolvingMetadata } from "next";
 import { Badge } from "@/components/ui/badge";
-import { calculateReadingTime } from "@/lib/utils";
+// import { calculateReadingTime } from "@/lib/utils";
 import { components } from "@/components/mdx-component";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -130,7 +130,7 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className="flex items-center gap-4 text-muted-foreground mb-4">
             <time>{format(new Date(post.date), "MMMM d, yyyy")}</time>
             {post.author && <span>By {post.author}</span>}
-            <span>{calculateReadingTime(wordCount)}</span>
+            {/* <span>{calculateReadingTime(wordCount)}</span> */}
             <span>{wordCount} words</span>
           </div>
 
