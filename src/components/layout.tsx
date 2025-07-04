@@ -33,8 +33,14 @@ export default function Layout({ children }: LayoutProps) {
 
       <footer className="bg-muted border-t">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-muted-foreground">
-            reisedagboka {new Date().getFullYear()}: laget av Nina Flaaten med Next.js, Vercel og Notion.
+          <p className="text-center text-sm text-muted-foreground leading-relaxed">
+            ✍️ <span className="font-semibold">reisedagboka {new Date().getFullYear()}</span><br />
+            laget av <span className="relative group cursor-pointer">
+              Nina Flaaten
+              <span className="absolute -top-8 left-1 -translate-x-1/2 w-64 bg-muted text-foreground text-sm px-4 py-2 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Bachelor i Datateknologi fra Universitetet i Bergen
+              </span>
+            </span> — bygget med Next.js, Vercel &amp; Notion
           </p>
         </div>
       </footer>
