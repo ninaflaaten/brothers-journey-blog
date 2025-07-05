@@ -1,46 +1,45 @@
 import Link from "next/link";
 import { ReactNode } from "react";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/mode-toggle"; // light/dark mode
 
+// Forteller hvilke props Layout-komponenten forventer å få inn
 interface LayoutProps {
   children: ReactNode;
 }
 
+// Hovedkomponenten Layout
 export default function Layout({ children }: LayoutProps) {
   return (
+    // Wrapper rundt hele siden, setter minimum høyde til hele skjermen og bakgrunnsfarge
     <div className="min-h-screen bg-background">
+      
+      {/* Header */}
       <header className="border-b">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
-              <Link
-                href="/"
-                className="flex items-center text-xl font-bold text-foreground"
-              >
-                reisedagboka
-              </Link>
+              {/* Link til forsiden */}
+              <Link href="/" className="flex items-center text-xl font-bold text-foreground">reisedagboka</Link>
             </div>
             <div className="flex items-center">
+              {/* Light/dark mode switch */}
               <ModeToggle />
             </div>
           </div>
         </nav>
       </header>
 
+      {/* Hovedinnhold */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {children}
       </main>
 
-      <footer className="bg-muted border-t">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <p className="text-center text-sm text-muted-foreground leading-relaxed">
+      {/* Footer */}
+      <footer className="bg-muted border-t"> {/* dempet farge, tynn strek for adskilling */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> {/* max bredde, midstilt, padding ulike skjermstørrelser */}
+          <p className="text-center text-sm text-muted-foreground leading-relaxed"> {/* midstilt, liten tekst, dempet farge, større linjeavstand */}
             ✍️ <span className="font-semibold">reisedagboka {new Date().getFullYear()}</span><br />
-            laget av <span className="relative group cursor-pointer">
-              Nina Flaaten
-              <span className="absolute -top-8 left-1 -translate-x-1/2 w-64 bg-muted text-foreground text-sm px-4 py-2 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Bachelor i Datateknologi fra Universitetet i Bergen
-              </span>
-            </span> — bygget med Next.js, Vercel &amp; Notion
+            laget av Nina Flaaten — bygget med Next.js, Vercel &amp; Notion
           </p>
         </div>
       </footer>
