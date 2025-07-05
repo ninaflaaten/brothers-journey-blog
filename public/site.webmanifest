@@ -1,0 +1,15 @@
+{
+  "name": "Sindres reisedagbok",
+  "short_name": "Sindre",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "En personlig reisedagbok",
+  "icons": [
+    {
+      "src": "/sindre-logo.ico",
+      "type": "image/x-icon",
+      "sizes": "64x64"
+    }
+  ]
+}

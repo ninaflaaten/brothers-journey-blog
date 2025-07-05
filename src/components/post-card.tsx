@@ -1,10 +1,8 @@
 // Postkort
 import Link from "next/link";
-// import Image from "next/image";
 import { format } from "date-fns";
 import { Post, getWordCount } from "@/lib/notion";
 import { Badge } from "@/components/ui/badge";
-// import { calculateReadingTime } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -16,10 +14,9 @@ interface PostCardProps {
   post: Post;
 }
 
+// Komponent som viser et kort (card) for hvert blogginnlegg
 export default function PostCard({ post }: PostCardProps) {
   const wordCount = post.content ? getWordCount(post.content) : 0;
-  // const readingTime = calculateReadingTime(wordCount);
- 
 
   return (
     <Card
@@ -29,13 +26,16 @@ export default function PostCard({ post }: PostCardProps) {
           : "bg-white/40 dark:bg-zinc-900/60 shadow-md border-none backdrop-blur-md"
       }`}
     >
+      {/* Klikkbar lenke som dekker hele kortet */}
       <Link
         href={`/posts/${post.slug}`}
         className="absolute inset-0 z-10"
         aria-label={post.title}
       />
+      
+      {/* Viser forsidebilde (hvis det finnes) */}
       <div className="relative w-full overflow-hidden rounded-t-xl pt-0 mt-[-3rem]">
-        {post.coverImage ? ( // endret for å legge til bilder enklest mulig
+        {post.coverImage ? (
           <img
             src={post.coverImage}
             alt={post.title}
@@ -44,17 +44,9 @@ export default function PostCard({ post }: PostCardProps) {
         ) : (
           <div className="absolute inset-0 bg-muted/80" />
         )}
-        {post.category && (
-          <div className="absolute top-4 left-4 z-20">
-            <Badge
-              variant="secondary"
-              className="bg-white/90 dark:bg-zinc-800/80 text-xs px-2 py-1 rounded shadow"
-            >
-              {post.category}
-            </Badge>
-          </div>
-        )}
       </div>
+
+      {/* Tittel og beskrivelse */}
       <CardHeader className="px-6 pt-0 pb-6 space-y-2">
         <div className="group-hover:pr-8 transition-all duration-300">
           <h2 className="text-2xl font-bold text-zinc-800 dark:text-white group-hover:text-primary transition-colors">
@@ -69,11 +61,17 @@ export default function PostCard({ post }: PostCardProps) {
           {post.description.replace(/[#*_`~>-]+/g, "")}
         </p>
       </CardHeader>
+
+      {/* Viser forfatter hvis satt (høre med Sindre om det er nødvendig) */}
       <CardContent className="px-6 pb-4">
         {post.author && (
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">By {post.author}</p>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            {Array.isArray(post.author) ? post.author.join(", ") : post.author}
+          </p>
         )}
       </CardContent>
+
+      {/* Viser tags som små merkelapper */}
       {post.tags && post.tags.length > 0 && (
         <CardFooter className="px-6 pb-4">
           <div className="flex gap-2 flex-wrap">
