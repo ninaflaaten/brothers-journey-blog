@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/sindre-logo.ico",
-    shortcut: "/sindre-logo-16x16.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteUrl}/site.webmanifest`,
