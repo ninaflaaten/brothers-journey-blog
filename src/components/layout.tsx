@@ -39,7 +39,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> {/* max bredde, midstilt, padding ulike skjermstørrelser */}
           <p className="text-center text-sm text-muted-foreground leading-relaxed"> {/* midstilt, liten tekst, dempet farge, større linjeavstand */}
             ✍️ <span className="font-semibold">reisedagboka {new Date().getFullYear()}</span><br />
-            laget av Nina Flaaten — bygget med Next.js, Vercel &amp; Notion
+            Nina Flaaten — bygget med Next.js, Vercel &amp; Notion
           </p>
         </div>
       </footer>

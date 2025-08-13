@@ -32,7 +32,7 @@ export default async function Home() {
         {/* Left column for intro */}
         <div className="lg:w-[28%] lg:sticky lg:top-24 self-start">
           {posts
-            .filter((post) => post.title.toLowerCase().includes("hvem er jeg"))
+            .filter((post) => post.title.toLowerCase().includes("manipal")) // fikse så det ikke er hardcoda
             .map((post) => (
               <div key={post.id}>
                 <PostCard post={post} />
@@ -43,7 +43,7 @@ export default async function Home() {
         {/* Right column for main gallery */}
         <div className="lg:w-[65%] grid grid-cols-1 sm:grid-cols-2 gap-6">
           {posts
-            .filter((post) => !post.title.toLowerCase().includes("hvem er jeg"))
+            .filter((post) => !post.title.toLowerCase().includes("manipal"))
             .map((post) => (
               <div key={post.id} className="break-inside-avoid">
                 <PostCard post={post} />

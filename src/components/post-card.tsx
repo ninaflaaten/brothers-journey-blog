@@ -21,8 +21,8 @@ export default function PostCard({ post }: PostCardProps) {
   return (
     <Card
       className={`group relative overflow-hidden rounded-xl transition-all duration-300 h-[500px] flex flex-col justify-between ${
-        post.title === "Hvem er jeg"
-          ? "bg-white/40 dark:bg-zinc-800/60 shadow-lg md:col-span-2 backdrop-blur-md"
+        post.title === "Manipal"
+          ? "bg-white/40 dark:bg-zinc-800/60 shadow-lg md:col-span-2 backdrop-blur-md "
           : "bg-white/40 dark:bg-zinc-900/60 shadow-md border-none backdrop-blur-md"
       }`}
     >
@@ -47,7 +47,7 @@ export default function PostCard({ post }: PostCardProps) {
       </div>
 
       {/* Tittel og beskrivelse */}
-      <CardHeader className="px-6 pt-0 pb-6 space-y-2">
+      <CardHeader className="px-6 pt-0 pb-6 space-y-2 -mt-4">
         <div className="group-hover:pr-8 transition-all duration-300">
           <h2 className="text-2xl font-bold text-zinc-800 dark:text-white group-hover:text-primary transition-colors">
             {post.title}
@@ -55,7 +55,7 @@ export default function PostCard({ post }: PostCardProps) {
         </div>
         <p
           className={`text-sm text-zinc-600 dark:text-zinc-300 ${
-            post.title === "Hvem er jeg" ? "line-clamp-none" : "line-clamp-4"
+            post.title === "Manipal" ? "line-clamp-none" : "line-clamp-4"
           }`}
         >
           {post.description.replace(/[#*_`~>-]+/g, "")}
