@@ -48,15 +48,15 @@ export default async function Home() {
             <div className="relative inline-block group pt-2 hidden sm:inline-block">
               <div className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
                 <span className="sr-only">Åpne meny</span>
+                {/* <span className="block h-[2px] w-4 bg-current"></span>
                 <span className="block h-[2px] w-4 bg-current"></span>
-                <span className="block h-[2px] w-4 bg-current"></span>
-                <span className="block h-[2px] w-4 bg-current"></span>
-                Meny
+                <span className="block h-[2px] w-4 bg-current"></span> */}
+                🔎 UTFORSK
               </div>
               <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
-                <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
-                <a href="#hvor-er-vi" className="block px-4 py-2 text-sm hover:bg-foreground/5">Hvor er vi?</a>
-                <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
+                <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">➡️ Om oss</a>
+                <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">🏞️ Bildedryss</a>
+                <a href="#hvor-er-vi" className="block px-4 py-2 text-sm hover:bg-foreground/5">📍 Hvor er vi?</a>
               </nav>
             </div>
           </div>
@@ -98,8 +98,8 @@ export default async function Home() {
       </div>
 
       {/* Hvor er vi – innebygd kart i stedet for ekstern lenke */}
-      <section id="hvor-er-vi" className="mx-auto max-w-[min(92vw,72rem)] mb-6 mt-10">
-        <h2 className="text-sm font-bold tracking-widest uppercase mb-2">Hvor er vi?</h2>
+      <section id="hvor-er-vi" className="mx-auto max-w-[min(92vw,72rem)] mb-6 mt-10 scroll-mt-[70px]">
+        <h2 className="text-sm font-bold tracking-widest uppercase mb-2">📍 Vi befinner oss i Manipal</h2>
         <div className="w-full rounded-lg overflow-hidden border">
           <div className="w-full h-[280px] sm:h-[360px] md:h-[460px]">
             <iframe
@@ -114,11 +114,7 @@ export default async function Home() {
             />
           </div>
         </div>
-        <p className="text-xs text-muted-foreground mt-2">Zoom og dra i kartet. Åpne i nytt vindu? <a className="underline" href="https://www.google.com/maps?q=Manipal" target="_blank" rel="noreferrer">Se på Google Maps</a>.</p>
       </section>
-      <footer className="w-full bg-background/80 text-center py-6 mt-10 text-base font-medium text-muted-foreground">
-        © 2025 Journey – Alle rettigheter forbeholdt
-      </footer>
     </div>
   );
 }
