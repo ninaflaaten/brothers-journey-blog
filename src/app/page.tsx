@@ -55,7 +55,7 @@ export default async function Home() {
               </div>
               <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
                 <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">➡️ Om oss</a>
-                <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">🏞️ Bildedryss</a>
+                <a href="/posts/bildedryss" className="block px-4 py-2 text-sm hover:bg-foreground/5">🏞️ Bildedryss</a>
                 <a href="#hvor-er-vi" className="block px-4 py-2 text-sm hover:bg-foreground/5">📍 Hvor er vi?</a>
               </nav>
             </div>
