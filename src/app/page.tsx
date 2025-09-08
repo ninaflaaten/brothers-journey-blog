@@ -3,16 +3,16 @@ import { fetchPublishedPosts, getPost, Post } from "@/lib/notion";
 import PostCard from "@/components/post-card";
 
 const styles = {
-  container: "px-8 sm:px-6 lg:px-8",
+  container: "px-3 sm:px-6 lg:px-8",
   menuBar: "flex items-center justify-between border rounded px-6 py-2 mb-4",
   menuText: "font-bold tracking-wide",
   menuButton: "flex items-center gap-2 font-bold",
-  gifWrapper: "mx-auto flex justify-center items-center overflow-hidden mb-1 -mt-4 h-[220px] sm:h-[260px] md:h-[300px]",
+  gifWrapper: "mx-auto flex justify-center items-center overflow-hidden mb-1 -mt-4 h-[160px] sm:h-[220px] md:h-[300px]",
   gifImage: "w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl h-auto object-contain m-0 p-0",
-  subtitle: "text-lg text-muted-foreground -mt-2 pb-2",
+  subtitle: "text-base sm:text-lg text-muted-foreground -mt-2 pb-2",
   mainWrapper: "max-w-5xl mx-auto text-center mb-2 mt-0 space-y-0",
   leftColumn: "lg:w-[28%] lg:sticky lg:top-24 self-start",
-  rightColumn: "lg:w-[65%] grid grid-cols-1 sm:grid-cols-2 gap-6",
+  rightColumn: "lg:w-[65%] grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6",
   menuWrap: "relative inline-block",
   menuSummary: "list-none cursor-pointer flex items-center gap-2 font-bold rounded px-3 py-1 hover:bg-gray-100",
   menuDropdown: "absolute right-0 top-full w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50",
@@ -95,7 +95,7 @@ export default async function Home() {
           {posts
             .filter((post) => post.title.toLowerCase().includes("manipal")) // fikse så det ikke er hardcoda
             .map((post) => (
-              <div key={post.id}>
+              <div key={post.id} className="max-w-md w-full mx-auto">
                 <PostCard post={post} />
               </div>
             ))}
@@ -106,7 +106,7 @@ export default async function Home() {
           {posts
             .filter((post) => !post.title.toLowerCase().includes("manipal"))
             .map((post) => (
-              <div key={post.id} className="break-inside-avoid">
+              <div key={post.id} className="break-inside-avoid max-w-md w-full mx-auto">
                 <PostCard post={post} />
               </div>
             ))}
