@@ -38,7 +38,7 @@ export default async function Home() {
     <div className={styles.container}>
       <div className="relative">
         {/* Sticky top nav with hamburger */}
-        <header className="sticky top-1 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/50 bg-background/70 ring-1 ring-border/50">
+        <header className="hidden sm:block sticky top-1 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/50 bg-background/70 ring-1 ring-border/50">
           <div className="mx-auto flex max-w-[min(92vw,72rem)] items-center justify-between px-4 py-1.5">
             <span className="text-sm font-bold tracking-widest uppercase">Journey</span>
             <div className="relative">
