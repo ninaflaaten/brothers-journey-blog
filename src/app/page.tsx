@@ -8,7 +8,7 @@ const styles = {
   menuText: "font-bold tracking-wide",
   menuButton: "flex items-center gap-2 font-bold",
   gifWrapper: "mx-auto flex justify-center items-center overflow-hidden mb-1 -mt-4 h-[220px] sm:h-[260px] md:h-[300px]",
-  gifImage: "w-full max-w-4xl h-auto object-contain m-0 p-0 scale-150 sm:scale-125",
+  gifImage: "w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl h-auto object-contain m-0 p-0",
   subtitle: "text-lg text-muted-foreground -mt-2 pb-2",
   mainWrapper: "max-w-5xl mx-auto text-center mb-2 mt-0 space-y-0",
   leftColumn: "lg:w-[28%] lg:sticky lg:top-24 self-start",
@@ -41,19 +41,38 @@ export default async function Home() {
         <header className="sticky top-1 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/50 bg-background/70 ring-1 ring-border/50">
           <div className="mx-auto flex max-w-[min(92vw,72rem)] items-center justify-between px-4 py-1.5">
             <span className="text-sm font-bold tracking-widest uppercase">Journey</span>
-            <div className="relative inline-block group pt-2">
-              <div className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
-                <span className="sr-only">Åpne meny</span>
-                <span className="block h-[2px] w-4 bg-current"></span>
-                <span className="block h-[2px] w-4 bg-current"></span>
-                <span className="block h-[2px] w-4 bg-current"></span>
-                Meny
+            <div className="relative">
+              {/* Mobile: tap to open */}
+              <details className="relative sm:hidden">
+                <summary className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
+                  <span className="sr-only">Åpne meny</span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  Meny
+                </summary>
+                <nav className="absolute right-0 top-full mt-2 w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg">
+                  <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
+                  <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
+                  <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
+                </nav>
+              </details>
+
+              {/* Desktop: hover to open */}
+              <div className="relative inline-block group pt-2 hidden sm:inline-block">
+                <div className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
+                  <span className="sr-only">Åpne meny</span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  <span className="block h-[2px] w-4 bg-current"></span>
+                  Meny
+                </div>
+                <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
+                  <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
+                  <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
+                  <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
+                </nav>
               </div>
-              <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
-                <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
-                <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
-                <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
-              </nav>
             </div>
           </div>
         </header>
