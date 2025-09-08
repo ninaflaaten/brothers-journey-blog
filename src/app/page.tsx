@@ -62,6 +62,18 @@ export default async function Home() {
           </div>
         </div>
       </header>
+      {/* Mobile info button & menu */}
+      <details className="sm:hidden fixed left-3 bottom-3 z-[60]">
+        <summary className="list-none w-12 h-12 rounded-full bg-background/80 backdrop-blur shadow-lg ring-1 ring-border/50 flex items-center justify-center text-sm font-semibold cursor-pointer select-none">
+          <span aria-hidden>ℹ️</span>
+          <span className="sr-only">Åpne meny</span>
+        </summary>
+        <nav className="absolute left-0 bottom-14 w-56 rounded-xl border border-border/50 bg-card shadow-xl p-1">
+          <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">➡️ Om oss</a>
+          <a href="/posts/bildedryss" className="block px-4 py-2 text-sm hover:bg-foreground/5">🏞️ Bildedryss</a>
+          <a href="#hvor-er-vi" className="block px-4 py-2 text-sm hover:bg-foreground/5">📍 Hvor er vi?</a>
+        </nav>
+      </details>
       <div className={styles.mainWrapper}>
         <div className={styles.gifWrapper}>
           <img
