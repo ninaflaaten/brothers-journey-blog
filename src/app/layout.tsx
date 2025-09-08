@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] }); // font
 
 // Henter nettsteds-URL fra miljøvariabel, eller bruker standard
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://india-sindres-journey.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://india-volda-journey.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

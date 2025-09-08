@@ -47,11 +47,11 @@
 /* 🌞 Farger som brukes i lys modus */
 :root {
   --radius: 0.625rem;
-  --background: #f5f4ee; /* Ensfarget lys bakgrunn (tidligere gradient) */
+  --background: #fdfdfd; /* Ensfarget lys bakgrunn  */
   --foreground: oklch(0.145 0 0);
-  --card: #eae8e0;
+  --card: #f3f3f3;
   --card-foreground: #1a1a1a;
-  --popover: #eae8e0;
+  --popover: #f3f3f3;
   --popover-foreground: #1a1a1a;
   --primary: #3f4d3d;
   --primary-foreground: #f5f5ef;
