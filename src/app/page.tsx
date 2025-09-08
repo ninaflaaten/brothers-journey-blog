@@ -35,48 +35,33 @@ export default async function Home() {
   const posts = await getPosts();
 
   return (
+    
     <div className={styles.container}>
-      <div className="relative">
-        {/* Sticky top nav with hamburger */}
-        <header className="hidden sm:block sticky top-1 z-40 backdrop-blur supports-[backdrop-filter]:bg-background/50 bg-background/70 ring-1 ring-border/50">
-          <div className="mx-auto flex max-w-[min(92vw,72rem)] items-center justify-between px-4 py-1.5">
-            <span className="text-sm font-bold tracking-widest uppercase">Journey</span>
-            <div className="relative">
-              {/* Mobile: tap to open */}
-              <details className="relative sm:hidden group">
-                <summary className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2 group-open:hidden">
-                  <span className="sr-only">Åpne meny</span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  Meny
-                </summary>
-                <nav className="absolute right-0 top-full mt-2 w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg z-50">
-                  <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
-                  <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
-                  <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
-                </nav>
-              </details>
-
-              {/* Desktop: hover to open */}
-              <div className="relative inline-block group pt-2 hidden sm:inline-block">
-                <div className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
-                  <span className="sr-only">Åpne meny</span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  <span className="block h-[2px] w-4 bg-current"></span>
-                  Meny
-                </div>
-                <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
-                  <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
-                  <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
-                  <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
-                </nav>
+      {/* Spacer for initial offset on desktop/tablet */}
+      <div className="hidden sm:block h-5" aria-hidden="true" />
+      {/* Sticky top nav */}
+      <header className="hidden sm:block sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/40 bg-background/50 ring-1 ring-border/50">
+        <div className="mx-auto flex max-w-[min(92vw,72rem)] items-center justify-between px-4 py-1.5">
+          <span className="text-sm font-bold tracking-widest uppercase">Journey</span>
+          <div className="relative">
+            {/* Desktop: hover to open */}
+            <div className="relative inline-block group pt-2 hidden sm:inline-block">
+              <div className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
+                <span className="sr-only">Åpne meny</span>
+                <span className="block h-[2px] w-4 bg-current"></span>
+                <span className="block h-[2px] w-4 bg-current"></span>
+                <span className="block h-[2px] w-4 bg-current"></span>
+                Meny
               </div>
+              <nav className="absolute right-0 top-full w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 transition">
+                <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
+                <a href="#hvor-er-vi" className="block px-4 py-2 text-sm hover:bg-foreground/5">Hvor er vi?</a>
+                <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
+              </nav>
             </div>
           </div>
-        </header>
-      </div>
+        </div>
+      </header>
       <div className={styles.mainWrapper}>
         <div className={styles.gifWrapper}>
           <img
@@ -85,9 +70,8 @@ export default async function Home() {
             className={styles.gifImage}
           />
         </div>
-
-        
       </div>
+
 
       <div className="flex flex-col lg:flex-row gap-8 justify-between items-start">
         {/* Left column for intro */}
@@ -112,6 +96,29 @@ export default async function Home() {
             ))}
         </div>
       </div>
+
+      {/* Hvor er vi – innebygd kart i stedet for ekstern lenke */}
+      <section id="hvor-er-vi" className="mx-auto max-w-[min(92vw,72rem)] mb-6 mt-10">
+        <h2 className="text-sm font-bold tracking-widest uppercase mb-2">Hvor er vi?</h2>
+        <div className="w-full rounded-lg overflow-hidden border">
+          <div className="w-full h-[280px] sm:h-[360px] md:h-[460px]">
+            <iframe
+              title="Kart over hvor vi er"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.077650973833!2d74.79233121532976!3d13.352996490610548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4c898f93c27%3A0x2bb0145b3f8a4c09!2sManipal%2C%20Karnataka%2C%20India!5e0!3m2!1sno!2sno!4v1700000000000!5m2!1sno!2sno"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+        <p className="text-xs text-muted-foreground mt-2">Zoom og dra i kartet. Åpne i nytt vindu? <a className="underline" href="https://www.google.com/maps?q=Manipal" target="_blank" rel="noreferrer">Se på Google Maps</a>.</p>
+      </section>
+      <footer className="w-full bg-background/80 text-center py-6 mt-10 text-base font-medium text-muted-foreground">
+        © 2025 Journey – Alle rettigheter forbeholdt
+      </footer>
     </div>
   );
 }
