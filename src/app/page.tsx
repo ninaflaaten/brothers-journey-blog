@@ -43,15 +43,15 @@ export default async function Home() {
             <span className="text-sm font-bold tracking-widest uppercase">Journey</span>
             <div className="relative">
               {/* Mobile: tap to open */}
-              <details className="relative sm:hidden">
-                <summary className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2">
+              <details className="relative sm:hidden group">
+                <summary className="list-none cursor-pointer select-none rounded-md px-3 py-1 text-sm font-semibold hover:bg-black/5 inline-flex items-center gap-2 group-open:hidden">
                   <span className="sr-only">Åpne meny</span>
                   <span className="block h-[2px] w-4 bg-current"></span>
                   <span className="block h-[2px] w-4 bg-current"></span>
                   <span className="block h-[2px] w-4 bg-current"></span>
                   Meny
                 </summary>
-                <nav className="absolute right-0 top-full mt-2 w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg">
+                <nav className="absolute right-0 top-full mt-2 w-48 overflow-hidden rounded-lg border border-border/50 bg-card shadow-lg z-50">
                   <a href="/" className="block px-4 py-2 text-sm hover:bg-foreground/5">Forside</a>
                   <a href="#artikler" className="block px-4 py-2 text-sm hover:bg-foreground/5">Artikler</a>
                   <a href="/posts/to-skrullinger-p-tur" className="block px-4 py-2 text-sm hover:bg-foreground/5">Om oss</a>
