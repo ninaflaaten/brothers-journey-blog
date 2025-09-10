@@ -12,7 +12,7 @@ const styles = {
   subtitle: "text-base sm:text-lg text-muted-foreground -mt-2 pb-2",
   mainWrapper: "max-w-5xl mx-auto text-center mb-2 mt-0 space-y-0",
   leftColumn: "lg:w-[28%] lg:sticky lg:top-24 self-start",
-  rightColumn: "lg:w-[65%] grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6",
+  rightColumn: "lg:w-[65%] grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-3 md:gap-6",
   menuWrap: "relative inline-block",
   menuSummary: "list-none cursor-pointer flex items-center gap-2 font-bold rounded px-3 py-1 hover:bg-gray-100",
   menuDropdown: "absolute right-0 top-full w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50",
@@ -69,7 +69,7 @@ export default async function Home() {
       {/* Mobile info button & menu */}
       <details className="sm:hidden fixed left-3 bottom-3 z-[60]">
         <summary className="list-none w-12 h-12 rounded-full bg-background/80 backdrop-blur shadow-lg ring-1 ring-border/50 flex items-center justify-center text-sm font-semibold cursor-pointer select-none">
-          <span aria-hidden>ℹ️</span>
+          <span aria-hidden>meny</span>
           <span className="sr-only">Åpne meny</span>
         </summary>
         <nav className="absolute left-0 bottom-14 w-56 rounded-xl border border-border/50 bg-card shadow-xl p-1">
