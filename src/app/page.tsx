@@ -4,11 +4,11 @@ import PostCard from "@/components/post-card";
 
 const styles = {
   container: "px-3 sm:px-6 lg:px-8",
-  menuBar: "flex items-center justify-between border rounded px-6 py-2 mb-4",
+  menuBar: "-mt-4 flex items-center justify-between border rounded px-6 py-2 mb-4",
   menuText: "font-bold tracking-wide",
   menuButton: "flex items-center gap-2 font-bold",
-  gifWrapper: "mx-auto flex justify-center items-center overflow-hidden mb-1 -mt-4 h-[160px] sm:h-[220px] md:h-[300px]",
-  gifImage: "w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl h-auto object-contain m-0 p-0",
+  gifWrapper: "mx-auto flex justify-center items-center overflow-hidden mb-1 -mt-4 max-h-[300px]",
+  gifImage: "w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl h-auto object-cover m-0 p-0",
   subtitle: "text-base sm:text-lg text-muted-foreground -mt-2 pb-2",
   mainWrapper: "max-w-5xl mx-auto text-center mb-2 mt-0 space-y-0",
   leftColumn: "lg:w-[28%] lg:sticky lg:top-24 self-start",
@@ -32,7 +32,11 @@ async function getPosts(): Promise<Post[]> {
 }
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts = (await getPosts()).sort((a, b) => {
+    const da = new Date(a.date || 0).getTime();
+    const db = new Date(b.date || 0).getTime();
+    return da - db;
+  });
 
   return (
     
@@ -110,7 +114,7 @@ export default async function Home() {
       </div>
 
       {/* Hvor er vi – innebygd kart i stedet for ekstern lenke */}
-      <section id="hvor-er-vi" className="mx-auto max-w-[min(92vw,72rem)] mb-6 mt-10 scroll-mt-[70px]">
+      <section id="hvor-er-vi" className="mx-auto max-w-[min(92vw,72rem)] mb-12 mt-10 scroll-mt-[70px]">
         <h2 className="text-sm font-bold tracking-widest uppercase mb-2">📍 Vi befinner oss i Manipal</h2>
         <div className="w-full rounded-lg overflow-hidden border">
           <div className="w-full h-[280px] sm:h-[360px] md:h-[460px]">
